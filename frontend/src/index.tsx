@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
-import {Header, Message, Page, SliderTest} from "./components/Index";
+import {Header, RegisterBox, Page, SliderTest} from "./components/Index";
 import { Button } from "@mui/material";
 
 const rootElemnt = document.getElementById("app") as HTMLElement;
@@ -17,13 +17,7 @@ root.render(
     <Button variant="text">Text</Button>
     <Button variant="contained">Contained</Button>
     <Button variant="outlined">Outlined</Button>
-    <Page />
-    <Page />
-    <Page />
-    <Page />
-    <Page />
-    <Page />
-    <Page />
+    <RegisterBox />
 
   </React.StrictMode>
 );
