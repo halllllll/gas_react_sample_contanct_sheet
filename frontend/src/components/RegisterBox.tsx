@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Button } from '@mui/material'
 import RegisterDialog from './RegisterDialog'
 import { Box } from '@mui/system'
+import {styled} from "@mui/material"
+
 
 const RegisterBox = () => {
   // dialog管理用state

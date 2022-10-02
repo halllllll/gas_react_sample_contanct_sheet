@@ -25,13 +25,15 @@ const RegisterDialog = (props: DialogProps) => {
   const { title, message, onAccept, onClose, open, buttonType } = props
 
   const [dialogOpen, setDialogOpen] = useState(false)
-
+  
+  // コンポーネント内でhookを使う時はwrapしようね
   // 承諾したときのなにか
   const handleAccept = () => {
     handleClose()
     onAccept()
   }
-  // ダイアログを閉じた時？
+  // ダイアログを閉じた時
+  // たぶん明示的にダイアログの閉じるボタンを押されなくてもそこ以外を押したときにも閉じる処理があるからここで定義してるんだと思われ
   const handleClose = () => {
     setDialogOpen(false)
     onClose()
