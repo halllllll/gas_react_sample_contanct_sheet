@@ -8,7 +8,7 @@
     "frontend:eslint": "eslint frontend/src/**/*.tsx --fix",
     "backend:prettier": "prettier  --config .prettierrc  backend/src/**/*.ts --write",
     "backend:eslint": "eslint backend/src/**/*.ts --fix",
-    "postbuild": "cpx ./backend/dist/**/* ./dist & cpx ./appsscript.json ./dist & cpx ./frontend/dist/index.html ./dist",
+    "postbuild": "cpx ./backend/dist/**/* ./dist & cpx ./appsscript.json ./dist & cpx ./frontend/dist/**/* ./dist",
     "push": "clasp push"
   },
   "keywords": [],
