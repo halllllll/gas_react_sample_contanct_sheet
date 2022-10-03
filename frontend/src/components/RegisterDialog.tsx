@@ -45,7 +45,14 @@ const RegisterDialog = (props: DialogProps) => {
   }, [open])
 
   return (
-    <Dialog open={dialogOpen}>
+    <Dialog
+        open={dialogOpen}
+        sx={{
+            m: 2,
+            p: 2,
+            color: (theme) => theme.palette.secondary.light
+        }}
+    >
       <DialogTitle>
         <span>{title}</span>
       </DialogTitle>
@@ -53,11 +60,27 @@ const RegisterDialog = (props: DialogProps) => {
         <Box>{message}</Box>
       </DialogContent>
       <DialogActions>
-        {buttonType === 'OkOnly' && <Button onClick={handleAccept}>OK</Button>}
+        {buttonType === 'OkOnly' &&
+        <Button
+            onClick={handleAccept}
+            variant="outlined"
+        >
+            OK
+        </Button>}
         {buttonType === 'YesNo' && (
           <>
-            <Button onClick={handleAccept}>YES</Button>
-            <Button onClick={handleClose}>NO</Button>
+            <Button
+                onClick={handleAccept}
+                variant="contained"
+            >
+                YES
+            </Button>
+            <Button
+                onClick={handleClose}
+                variant="contained"
+            >
+                NO
+            </Button>
           </>
         )}
       </DialogActions>

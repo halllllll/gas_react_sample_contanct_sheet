@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
-import {Header, RegisterBox, Page, SliderTest, ButtonStackSample} from "./components/Index";
-import { Button } from "@mui/material";
+import {Header, RegisterBox, Page, SliderTest, ButtonStackSample, TableSample} from "./components/Index";
+import { Box, Button } from "@mui/material";
 
 const rootElemnt = document.getElementById("app") as HTMLElement;
 const root = ReactDOM.createRoot(rootElemnt);
@@ -18,7 +18,17 @@ root.render(
     <Button variant="text">Text</Button>
     <Button variant="contained">Contained</Button>
     <Button variant="outlined">Outlined</Button>
-    <RegisterBox />
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center"
+      }}
+    >
+      <Box>
+        <RegisterBox />
+      </Box>
+      <TableSample />
+    </Box>
 
   </React.StrictMode>
 );
