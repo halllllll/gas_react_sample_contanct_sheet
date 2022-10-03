@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
-import {Header, RegisterBox, Page, SliderTest, ButtonStackSample, TableSample} from "./components/Index";
-import { Box, Button } from "@mui/material";
+import {AppHeader, ButtonStackSample} from "./components/Index";
+// import { Box, Button } from "@mui/material";
 
 const rootElemnt = document.getElementById("app") as HTMLElement;
 const root = ReactDOM.createRoot(rootElemnt);
@@ -10,12 +10,12 @@ const root = ReactDOM.createRoot(rootElemnt);
 
 root.render(
   <React.StrictMode>
-    <Header />
+    <AppHeader />
     <ButtonStackSample />
-    <SliderTest />
-    <Page />
+    {/* <SliderTest />
+    <Page /> */}
     {/**適当にMaterialUIのサンプルをはっつける */}
-    <Button variant="text">Text</Button>
+    {/* <Button variant="text">Text</Button>
     <Button variant="contained">Contained</Button>
     <Button variant="outlined">Outlined</Button>
     <Box
@@ -28,7 +28,7 @@ root.render(
         <RegisterBox />
       </Box>
       <TableSample />
-    </Box>
+    </Box> */}
 
   </React.StrictMode>
 );

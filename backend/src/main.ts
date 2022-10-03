@@ -1,7 +1,17 @@
 import global from './global'
 
+const SS = SpreadsheetApp.getActiveSpreadsheet();
+
 const getAllDataOfSheet = () => {
   console.log(`yes go `)
+}
+
+globalThis.outputThisSheetUrl = () => {
+  console.log(SS.getUrl());
+}
+
+globalThis.getAllSheetName = () =>{
+  return SS.getSheets().map(sheet=>sheet.getName());
 }
 
 global.doGet = () => {
@@ -10,6 +20,5 @@ global.doGet = () => {
   return HtmlService.createTemplateFromFile('index')
     .evaluate()
     .setTitle(`${title}`)
-    .addMetaTag("description", "gas react sample of using material ui and communicating sheet, simle CRUD")
     .addMetaTag('viewport', 'width=device-width, initial-scale=1')
 }

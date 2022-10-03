@@ -25,7 +25,7 @@ const RegisterDialog = (props: DialogProps) => {
   const { title, message, onAccept, onClose, open, buttonType } = props
 
   const [dialogOpen, setDialogOpen] = useState(false)
-  
+
   // コンポーネント内でhookを使う時はwrapしようね
   // 承諾したときのなにか
   const handleAccept = () => {
@@ -46,12 +46,12 @@ const RegisterDialog = (props: DialogProps) => {
 
   return (
     <Dialog
-        open={dialogOpen}
-        sx={{
-            m: 2,
-            p: 2,
-            color: (theme) => theme.palette.secondary.light
-        }}
+      open={dialogOpen}
+      sx={{
+        m: 2,
+        p: 2,
+        color: (theme) => theme.palette.secondary.light
+      }}
     >
       <DialogTitle>
         <span>{title}</span>
@@ -60,26 +60,18 @@ const RegisterDialog = (props: DialogProps) => {
         <Box>{message}</Box>
       </DialogContent>
       <DialogActions>
-        {buttonType === 'OkOnly' &&
-        <Button
-            onClick={handleAccept}
-            variant="outlined"
-        >
+        {buttonType === 'OkOnly' && (
+          <Button onClick={handleAccept} variant="outlined">
             OK
-        </Button>}
+          </Button>
+        )}
         {buttonType === 'YesNo' && (
           <>
-            <Button
-                onClick={handleAccept}
-                variant="contained"
-            >
-                YES
+            <Button onClick={handleAccept} variant="contained">
+              YES
             </Button>
-            <Button
-                onClick={handleClose}
-                variant="contained"
-            >
-                NO
+            <Button onClick={handleClose} variant="contained">
+              NO
             </Button>
           </>
         )}

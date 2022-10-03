@@ -3,7 +3,6 @@ import { Button } from '@mui/material'
 import RegisterDialog from './RegisterDialog'
 import { Box } from '@mui/system'
 
-
 const RegisterBox = () => {
   // dialog管理用state
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -18,13 +17,9 @@ const RegisterBox = () => {
         onAccept={() => console.log(`onAccept`)} // とりあえずコンソールに出力するだけとする
         onClose={() => setDialogOpen(false)}
       />
-      <Button
-        onClick={() => setDialogOpen(true)}
-        variant="contained"
-        
-    >
-            OPEN
-     </Button>
+      <Button onClick={() => setDialogOpen(true)} variant="contained">
+        OPEN
+      </Button>
     </Box>
   )
 }
