@@ -3,4 +3,3 @@ dist/**
 .vscode
 .parcel-cache
 .clasp.json
-package-lock.json
