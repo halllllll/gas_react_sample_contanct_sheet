@@ -1,17 +1,19 @@
 import global from './global'
 
-const SS = SpreadsheetApp.getActiveSpreadsheet();
+const SS = SpreadsheetApp.getActiveSpreadsheet()
 
 const getAllDataOfSheet = () => {
   console.log(`yes go `)
 }
 
 globalThis.outputThisSheetUrl = () => {
-  console.log(SS.getUrl());
+  console.log(SS.getUrl())
 }
 
-globalThis.getAllSheetName = () =>{
-  return SS.getSheets().map(sheet=>sheet.getName());
+globalThis.getAllSheetName = () => {
+  return JSON.parse(
+    JSON.stringify({ sheets: SS.getSheets().map((sheet) => sheet.getName()) })
+  )
 }
 
 global.doGet = () => {

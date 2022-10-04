@@ -19,7 +19,9 @@ globalThis.outputThisSheetUrl = ()=>{
     console.log($63dafec9a989d546$var$SS.getUrl());
 };
 globalThis.getAllSheetName = ()=>{
-    return $63dafec9a989d546$var$SS.getSheets().map((sheet)=>sheet.getName());
+    return JSON.parse(JSON.stringify({
+        sheets: $63dafec9a989d546$var$SS.getSheets().map((sheet)=>sheet.getName())
+    }));
 };
 (0, $f362cb38b7956a00$export$2e2bcd8739ae039).doGet = ()=>{
     const title = "react webapp on google apps script";

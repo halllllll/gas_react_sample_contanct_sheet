@@ -18,24 +18,36 @@ import { RunGoogleScript } from './Utils'
 
 const HeaderStyle = styled(AppBar)(({ theme }) => ({
   position: 'fixed',
-  color: 'primary'
+  color: "primary"
 }))
 
-const Header = () => {
-  const [selectOptions, setSelectOptions] = useState<[string] | unknown>()
+const genSelectItem = (data: string) => {
+  return <MenuItem value={data}>{data}</MenuItem>
+}
 
+const Header = () => {
+  const [selectOptions, setSelectOptions] = useState<[string]>(['...'])
+
+  const [curSelectedSheetName, setCurSelectedSheetName] = useState('')
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setCurSelectedSheetName(event.target.value)
+    console.log(`changed (pre) sheet: ${curSelectedSheetName}`);
+  }
+
+  // 初回起動でSpreadSheetのSheet名を取得・セレクトリストに反映
   useEffect(() => {
-    console.log('sheet取得')
     const serverGetAllSheetName = async () => {
       try {
-        const data = await RunGoogleScript('getAllSheetName')
-        if (Array.isArray(data)) {
-          data.forEach((d) => {
+        const resp = await RunGoogleScript('getAllSheetName')
+        const data = JSON.parse(JSON.stringify(resp))
+        if (typeof data.sheets !== null && Array.isArray(data.sheets)) {
+          data.sheets.forEach((d) => {
             console.log(d)
           })
-          setSelectOptions(data)
+          setSelectOptions(data.sheets)
         } else {
-          throw new Error(`serverGetAllSheetName not return Array data.`)
+          throw Error(`serverGetAllSheetName not return Array data.`)
         }
       } catch (err) {
         console.error(err)
@@ -45,20 +57,12 @@ const Header = () => {
     serverGetAllSheetName()
   }, [])
 
-  const [age, setAge] = React.useState('')
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value)
-  }
 
   return (
     <>
       <header>
         <HeaderStyle>
-          <Container
-            maxWidth="md"
-            disableGutters
-          >
+          <Container maxWidth="md" disableGutters>
             <Toolbar
               variant="dense"
               sx={{
@@ -76,7 +80,7 @@ const Header = () => {
               >
                 ヘッダーだよ
               </Typography>
-              {/* 以下追加しただけ */}
+
               <FormControl
                 sx={{
                   minWidth: 80,
@@ -84,24 +88,19 @@ const Header = () => {
                 }}
                 size="small"
               >
-                <InputLabel id="demo-simple-select-autowidth-label">
-                  Age
+                <InputLabel id="cur-sheet-name-label">
+                  シート名
                 </InputLabel>
                 <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
-                  value={age}
+                  labelId="cur-sheet-name-label"
+                  id="cur-sheet-name-id"
+                  value={curSelectedSheetName}
                   onChange={handleChange}
                   autoWidth
-                  label="Age"
+                  label="シート名"
                   variant="filled"
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Twenty</MenuItem>
-                  <MenuItem value={21}>Twenty one</MenuItem>
-                  <MenuItem value={22}>Twenty one and a half</MenuItem>
+                  {selectOptions.map((item) => genSelectItem(item))}
                 </Select>
               </FormControl>
             </Toolbar>
